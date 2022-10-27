@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;1,300&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #927dfc;
+}
+
+.wrapper {
+  background-color: #fff;
+  box-shadow: 1px 1px 10px 1px #999;
+  width: 500px;
+  height: 300px;
+  padding: 30px;
+  border-radius: 10px;
+  transition: height 0.4s;
+}
+.wrapper.active {
+  height: 530px;
+}
+.wrapper .upload-pic {
+  text-align: center;
+  border: 2px dashed gray;
+  height: 225px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+/*like the video concept*/
+.upload-pic.active {
+  border: none;
+}
+
+.upload-pic.active img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-pic.active p {
+  display: none;
+}
+
+.upload-pic.active + .upload-pic--content {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.upload-pic--icon {
+  width: 50px;
+  color: aqua;
+  display: block;
+}
+.upload-pic p {
+  font-size: 18px;
+  font-weight: 300;
+}
+.upload-pic--content {
+  margin: 10px 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s 0.5s ease;
+}
+
+.preview-img img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.row {
+  display: flex;
+  gap: 40px;
+}
+
+.row label {
+  font-size: 1.06rem;
+  font-weight: 700;
+}
+
+input[type="number"] {
+  color: #333;
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: 1px solid rebeccapurple;
+}
+
+input[type="number"]:focus {
+  border-color: #927dfc;
+}
+input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  accent-color: #927dfc;
+  margin-right: 7px;
+}
+/* input[type="file"] {
+  visibility: hidden;
+  display: none;
+} */
+
+input {
+  margin: 17px 0;
+}
+
+.col {
+  flex: 1;
+}
+
+.download-btn {
+  width: 100%;
+  padding: 20px;
+  background-color: #927dfc;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+}
+.download-btn:hover {
+  transform: scale(0.97);
+}
+
+canvas {
+  border-radius: 50%;
+  display: block;
+  height: 50%;
+  margin: auto;
+}

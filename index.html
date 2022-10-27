@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resize App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="upload-pic">
+        <input
+          type="file"
+          name="file_name"
+          id="file_name"
+          accept="images/*"
+          hidden
+        />
+        <img
+          src="images/upload-to-cloud-svgrepo-com.svg"
+          alt="upload icon image"
+          class="upload-pic--icon"
+        />
+        <p>Browse File to Download</p>
+      </div>
+      <div class="upload-pic--content">
+        <div class="control">
+          <div class="row control-resize">
+            <div class="col width">
+              <label for="width">Width</label>
+              <input type="number" value="0" name="width" id="width" />
+            </div>
+            <div class="col height">
+              <label for="height">Height</label>
+              <input type="number" value="0" name="height" id="height" />
+            </div>
+          </div>
+        </div>
+        <!-- width & height Resize -->
+
+        <div class="row control-helper">
+          <div class="col aspect">
+            <input type="checkbox" name="lock_aspect" id="lock-aspect" />
+            <label for="lock-aspect">Lock Aspect Ratio</label>
+          </div>
+          <div class="col quality">
+            <input type="checkbox" name="reduce_quality" id="reduce-quality" />
+            <label for="reduce-quality">Reduce Quality</label>
+          </div>
+        </div>
+        <!-- Aspects & Quality Checkbox -->
+
+        <div class="row">
+          <button class="download-btn">Download Image</button>
+        </div>
+      </div>
+    </div>
+    <!-- Script Files -->
+    <script src="script.js"></script>
+  </body>
+</html>
