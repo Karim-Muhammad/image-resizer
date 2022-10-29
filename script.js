@@ -17,34 +17,38 @@ const downloadBtn = document.querySelector(".download-btn");
 // Function for Load File
 
 const loadFile = (e) => {
-  const file = e.target.files[0];
-  uploadImg.addEventListener("load", () => {
+  const file = e.target.files[0]; // get file value of input
+  uploadImg.addEventListener("load", () => { // after image is loaded
     console.log(uploadImg);
-    widthInput.value = uploadImg.naturalWidth;
+    widthInput.value = uploadImg.naturalWidth; // get naturalWidth and put it in width input, and as well like height input
     heightInput.value = uploadImg.naturalHeight;
-    ogRatioAspect = widthInput.value / heightInput.value;
-    uploadDiv.classList.add("active");
-    document.querySelector(".wrapper").classList.add("active");
+    ogRatioAspect = widthInput.value / heightInput.value; // get the relation between (height, width) "radtio aspect of image"
+    uploadDiv.classList.add("active"); // make uploadDiv "active" to remove some structure which was for "upload" not for "preview"
+    document.querySelector(".wrapper").classList.add("active"); // make parent "wrapper" active as well, to change height
   });
   uploadImg.src = `images/${file.name}`;
 };
 
-uploadDiv.addEventListener("click", () => uploadFile.click());
-uploadFile.addEventListener("change", loadFile);
+uploadDiv.addEventListener("click", () => uploadFile.click()); // when i click on "div", i do clicking on "file input"
+uploadFile.addEventListener("change", loadFile); // when i choose file(change value of input) do event "loadFile"
 
 // Function for Resize Image
 
 const resizeImg = (e) => {
+  // see if upload is active (which means there is image is previewed already) so do resize, otherwise Don't Resize anything.
   if (!uploadDiv.classList.contains("active")) return;
   console.log(e.target);
   const { id, value } = e.target;
 
   // Control Ratio
 
+  // if 'ratio input' is checked do relate between width and height to be consistent
   if (ratioInput.checked) {
     if (id === "width") heightInput.value = widthInput.value / ogRatioAspect;
     else widthInput.value = heightInput.value * ogRatioAspect;
   }
+  
+  // otherwise (no checked) so only change current input only, no another
 };
 widthInput.addEventListener("keyup", resizeImg);
 heightInput.addEventListener("keyup", resizeImg);
@@ -53,7 +57,11 @@ downloadBtn.addEventListener("click", resizeAndDownload);
 
 function resizeAndDownload() {
   //   console.log(uploadDiv.classList.contains("active"));
+  
+  // if there is image already ok download is allowed, if there is not? not allowed
   if (!uploadDiv.classList.contains("active")) return;
+  
+  // see if there is "canvas" element or not(null), i have to use '?' to avoid using method for nothing(null) which will throw an error(TypeError)
   document.querySelector("canvas")?.remove();
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
